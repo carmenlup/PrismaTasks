@@ -1,2 +1,2 @@
-# PrismaTasks
-Prisma practice
+# DSA Tasks
+DSA practice
