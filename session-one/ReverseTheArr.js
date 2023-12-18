@@ -7,7 +7,7 @@ function reverse(arr){
     let temp = arr[i]
     arr[i] = arr[end - i]
     arr[end -i] = temp
-    console.log(arr)
+    // console.log(arr)
   }
   return arr
 }
