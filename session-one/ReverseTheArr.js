@@ -3,6 +3,7 @@
 
 function reverse(arr){
   let end = arr.length - 1;
+  // arr.length / 2 is working only for the entire array
   for(let i = 0; i < arr.length / 2; i++) {
     let temp = arr[i]
     arr[i] = arr[end - i]
