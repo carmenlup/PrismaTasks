@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "Algorithms\Al
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Tests", "Algorithms.Tests\Algorithms.Tests.csproj", "{950B47A8-47CD-4D2A-BFA0-ECE1808416DF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38E601B5-973A-4BB7-B58D-FAB6A3DC64DC}"
+	ProjectSection(SolutionItems) = preProject
+		SessionsSummary.md = SessionsSummary.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
