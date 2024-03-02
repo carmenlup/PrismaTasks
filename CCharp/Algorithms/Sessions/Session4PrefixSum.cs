@@ -119,6 +119,11 @@ namespace Algorithms.Sessions
             return count;
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public List<int> RangeSum(int[] input)
         {
             var result = new List<int>();
