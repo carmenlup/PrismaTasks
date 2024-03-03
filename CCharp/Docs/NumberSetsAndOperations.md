@@ -81,10 +81,14 @@ Parentheses are performed in the next order:
 #### Distributivity of multiplication property - multiplying the sum of two or more numbers is the same as multiplying the addends separately
 > $a * (b_{1} + b_{2} + ... + b_{n}) = a * b_{1} + a * b_{2} + ... + a * b_{n}$
 
-#### Exponent formulas:
+#### Exponentiation properties (power):
 ### 1. $a^{n} * a^{m} = a^{n\\ +\\ m}$
 ### 2. $a^{n} / a^{m} = a^{n\\ -\\ m}$
 ### 3. $(a^{n})^{m} = a^{n\\ *\\ m}$
+### 4. $(a * b)^{n} = a^n * b^{n}$
+### 5. $a^{0} = 1$
+### 6. $`a^{-n} = \frac{1}{a^{n}}`$
+### 7. $a^{1} = a$
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 ### C. Integer Factorization

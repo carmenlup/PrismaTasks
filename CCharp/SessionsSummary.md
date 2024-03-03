@@ -43,6 +43,11 @@ $1 --> logN --> \sqrt{N} --> N -> N logN --> N \sqrt{N} --> N^{2} --> 2^{N} $
 1. Quizzes on theory
 2. Examples
 # Session 4 - Carry Forward
-TBD
+TBD 
 # Session 5 - Prefix Sum
-TBD
+### Problems
+1. Sum Range in a given array for a number of Queries
+    - Brute force 
+    - Optimal solution
+1. Equilibrium problem - LeftSum = RightSum 
+1. 

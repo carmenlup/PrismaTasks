@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithms.Assignment
 {
-    public class Session4Assignment
+    public class Session5PrefixSumAssignment
     {
         public int[] PrefixSumInPlace(int[] input)
         {
