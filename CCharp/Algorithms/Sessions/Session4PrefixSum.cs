@@ -9,7 +9,12 @@ namespace Algorithms.Sessions
     public class Session4PrefixSum
     {
         /// <summary>
-        /// 303. Range Sum Query - Immutable ?
+        /// 303. Range Sum Query - Immutable
+        /// https://leetcode.com/problems/range-sum-query-immutable/
+        /// Solution:
+        ///     1. iterate over all queries
+        ///     2. iterate over the array foreach query to find the sum
+        ///     3. return an array with all sums that meet the criteria
         /// T.C = O(N*Q)
         /// S.C = O(Q)
         /// </summary>
@@ -36,7 +41,35 @@ namespace Algorithms.Sessions
             return result;
         }
 
+        #region leetcode 
+        ////public class NumArray
+        ////{
+
+        ////    int[] arr;
+        ////    public NumArray(int[] nums)
+        ////    {
+        ////        arr = new int[nums.Length];
+        ////        arr[0] = nums[0];
+        ////        for (var i = 1; i < nums.Length; i++)
+        ////            arr[i] += arr[i - 1] + nums[i];
+        ////    }
+
+        ////    public int SumRange(int left, int right)
+        ////    {
+        ////        int sum = 0;
+
+        ////        if (left == 0)
+        ////            sum = arr[right];
+        ////        else
+        ////            sum = arr[right] - arr[left - 1];
+
+        ////        return sum;
+        ////    }
+        ////}
+        #endregion
+
         /// <summary>
+        /// https://leetcode.com/problems/range-sum-query-immutable/
         /// T.C = O(N + Q)
         /// S.C = O(N)
         /// </summary>
