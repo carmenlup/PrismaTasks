@@ -22,7 +22,7 @@
 Classification by grade:
 1. Grade 1: + and - (A and S)
 1. Grade 2: * and / (M and D)
-1. Grade 3: Exponent (E)
+1. Grade 3: Exponent $^{b}$ - the power of a number (E)
 
 #### Operations order (P)
 Operations are performed from grade 3 to grade 1
@@ -32,6 +32,25 @@ Parentheses are performed in the next order:
 1. ()
 1. []
 1. \{}
+> Example:
+> 
+> Calculate expression E
+> 
+> $E = 1 + \\{2^{18} - 2^3 * [2^{25} / (5 * 2^{10} - 1024) + 2^{13}]\\}$
+>
+> Solution:
+>
+> $1^{th}$ perform operations in () => $(5 * 2^{10} - 1024) = 5 * 1024 - 1024 = 4 * 1024 = 2^{2} * 2^{10} = 2^{12}$
+>
+> => $E = 1 + \\{2^{18} - 2^3 * [2^{25} / 2^{12} + 2^{13}]\\}$
+> 
+> $2^{nd}$ perform operations in [] => $[2^{25} / 2^{12} + 2^{13}] = 2^{13} + 2^{13} = 2^{13} * (2 + 2) = 2^{13} * 2^{2} = 2^{15}$ 
+>
+> => $E = 1 + \\{2^{18} - 2^3 * 2^{15}\\}$
+>
+> $3{rd}$  perform operations in {} => $\\{2^{18} - 2^3 * 2^{15}\\} = 2^{18} - 2^{3 + 15} = 2^{18} - 2^{18} = 0
+>
+> => E = 1 + 0 = 1;
 
 ### PEMDAS operation order (Parentheses, Exponent, Multiply, Divide, Add, Subtract)
 "Please Excuse My Dear Aunt Sally" - mnemonic to remember the operations order :smiley:
@@ -62,6 +81,10 @@ Parentheses are performed in the next order:
 #### Distributivity of multiplication property - multiplying the sum of two or more numbers is the same as multiplying the addends separately
 > $a * (b_{1} + b_{2} + ... + b_{n}) = a * b_{1} + a * b_{2} + ... + a * b_{n}$
 
+#### Exponent formulas:
+### 1. $a^{n} * a^{m} = a^{n\\ +\\ m}$
+### 2. $a^{n} / a^{m} = a^{n\\ -\\ m}$
+### 3. $(a^{n})^{m} = a^{n\\ *\\ m}$
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 ### C. Integer Factorization

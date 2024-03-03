@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithms.Sessions
 {
-    public class Session4PrefixSum
+    public class Session5PrefixSum
     {
         /// <summary>
         /// 303. Range Sum Query - Immutable
