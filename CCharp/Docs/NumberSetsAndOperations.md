@@ -18,25 +18,50 @@
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
-### B. Important properties:
+### B. Basic Operations
+Classification by grade:
+1. Grade 1: + and - (A and S)
+1. Grade 2: * and / (M and D)
+1. Grade 3: Exponent (E)
+
+#### Operations order (P)
+Operations are performed from grade 3 to grade 1
+#### Enforce operations order
+Operations order are enforced using Parentheses
+Parentheses are performed in the next order:
+1. ()
+1. []
+1. \{}
+
+### PEMDAS operation order (Parentheses, Exponent, Multiply, Divide, Add, Subtract)
+"Please Excuse My Dear Aunt Sally" - mnemonic to remember the operations order :)
+
 #### Addition properties in N, Z, Q 
-1. Aditive identity 0
+1. Additive identity 0
 > 0 + a = a + 0 = a
-2. Comutativity
+
+2. Commutativity
 > a + b = a + b 
-3. Asociativity
+
+3. Associativity
 > (a + b) + c = a + (b + c)
+
 #### Multiplication properties in N, Z, Q 
 1. Additive identity 0
 > 1 * a = a * 1 = a
+
 2. Commutativity
 > a * b = a * b 
+
 3. Associativity
 > (a * b) + c = a * (b * c)
+
 4. Zero property - Multiplying any number by 0 the result is zero 
 > a * 0 = 0
+
 #### Distributivity of multiplication property - multiplying the sum of two or more numbers is the same as multiplying the addends separately
 > $a * (b_{1} + b_{2} + ... + b_{n}) = a * b_{1} + a * b_{2} + ... + a * b_{n}$
+
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 ### C. Integer Factorization
