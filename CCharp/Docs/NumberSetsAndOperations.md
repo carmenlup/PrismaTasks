@@ -34,7 +34,7 @@ Parentheses are performed in the next order:
 1. \{}
 
 ### PEMDAS operation order (Parentheses, Exponent, Multiply, Divide, Add, Subtract)
-"Please Excuse My Dear Aunt Sally" - mnemonic to remember the operations order :)
+"Please Excuse My Dear Aunt Sally" - mnemonic to remember the operations order :smiley:
 
 #### Addition properties in N, Z, Q 
 1. Additive identity 0
