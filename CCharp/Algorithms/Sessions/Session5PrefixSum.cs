@@ -12,6 +12,7 @@ namespace Algorithms.Sessions
     {
         /// <summary>
         /// 303. Range Sum Query - Immutable
+        /// Easy
         /// https://leetcode.com/problems/range-sum-query-immutable/
         /// Solution:
         ///     1. iterate over all queries
@@ -71,6 +72,8 @@ namespace Algorithms.Sessions
         #endregion
 
         /// <summary>
+        /// 303. Range Sum Query - Immutable
+        /// Easy
         /// https://leetcode.com/problems/range-sum-query-immutable/
         /// T.C = O(N + Q)
         /// S.C = O(N)
@@ -188,7 +191,11 @@ namespace Algorithms.Sessions
         /// T.C = O(n + q), where n is the length of the array and q - number of queries
         /// S.C = O(q)
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input"></param
+        /// <param name="q">
+        ///     Two dimensional array of q queries with
+        ///     left and right values that represents the margins of the intervals
+        /// </param>
         /// <returns></returns>
         public List<int> CountEven(int[] input, int[][] q)
         {
