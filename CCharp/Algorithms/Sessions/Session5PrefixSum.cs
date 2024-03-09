@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -157,9 +159,68 @@ namespace Algorithms.Sessions
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public List<int> RangeSum(int[] input)
+        public List<int> CountEvenBruteForce(int[] input, int[][] q)
         {
             var result = new List<int>();
+            for (var i = 0; i < q.Length; i++)
+            {
+                var count = 0;
+                var left = q[i][0];
+                var right = q[i][1];
+                for (var j = left; j <= right; j++)
+                {
+                    if (input[j] % 2 == 0)
+                        count++;
+                }
+                result.Add(count);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public List<int> CountEven(int[] input, int[][] q)
+        {
+            var result = new List<int>();
+            var count = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] % 2 == 0)
+                    input[i] = 1;
+                else
+                {
+                    input[i] = 0;
+                }
+            }
+
+            //
+            int[] pSum = new int[input.Length];
+            var n = input.Length;
+            pSum[0] = input[0];
+            for (int i = 1; i < n; i++)
+            {
+                pSum[i] = pSum[i - 1] + input[i];
+            }
+
+            var left = 0;
+            var right = 0;
+            for (int i = 0; i < q.Length; i++)
+            {
+                left = q[i][0];
+                right = q[i][1];
+                if (left == 0)
+                    count = pSum[right];
+                else
+                {
+                    count = pSum[right] - pSum[left - 1];
+                }
+                result.Add(count);
+            }
+
             return result;
         }
     }

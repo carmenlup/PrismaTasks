@@ -13,6 +13,9 @@
 1. Reverse an array
 2. Rotate an array K number of times to right
 
+Important notes on optimal solution for Rotate an array k times:
+![Minim k rotation](./Docs/Images/ArrayRotationRemark.png "Minim k rotation")
+
 # Session 2 - Time complexity 1
 ### Content
 1. Calculate iterations in a given code
