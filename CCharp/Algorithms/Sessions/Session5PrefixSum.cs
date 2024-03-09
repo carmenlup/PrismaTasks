@@ -155,9 +155,15 @@ namespace Algorithms.Sessions
         }
 
         /// <summary>
-        /// TODO
+        /// Count even numbers in ranges for a given array
+        /// T.C = O(n * q), where n is the length of the array and q - number of queries
+        /// S.C = O(q)
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input"></param
+        /// <param name="q">
+        ///     Two dimensional array of q queries with
+        ///     left and right values that represents the margins of the intervals
+        /// </param>
         /// <returns></returns>
         public List<int> CountEvenBruteForce(int[] input, int[][] q)
         {
@@ -179,14 +185,14 @@ namespace Algorithms.Sessions
         }
 
         /// <summary>
-        /// TODO
+        /// T.C = O(n + q), where n is the length of the array and q - number of queries
+        /// S.C = O(q)
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         public List<int> CountEven(int[] input, int[][] q)
         {
             var result = new List<int>();
-            var count = 0;
             for (int i = 0; i < input.Length; i++)
             {
                 if (input[i] % 2 == 0)
@@ -197,7 +203,6 @@ namespace Algorithms.Sessions
                 }
             }
 
-            //
             int[] pSum = new int[input.Length];
             var n = input.Length;
             pSum[0] = input[0];
@@ -206,12 +211,12 @@ namespace Algorithms.Sessions
                 pSum[i] = pSum[i - 1] + input[i];
             }
 
-            var left = 0;
-            var right = 0;
+            var count = 0;
             for (int i = 0; i < q.Length; i++)
             {
-                left = q[i][0];
-                right = q[i][1];
+                var left = q[i][0];
+                var right = q[i][1];
+                
                 if (left == 0)
                     count = pSum[right];
                 else

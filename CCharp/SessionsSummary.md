@@ -52,5 +52,7 @@ TBD
 1. Sum Range in a given array for a number of Queries
     - Brute force 
     - Optimal solution
-1. Equilibrium problem - LeftSum = RightSum 
-1. 
+2. Equilibrium problem - LeftSum = RightSum 
+3. Count even numbers in ranges for a given array
+    - Brute force
+    - Optimal solution
