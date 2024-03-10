@@ -49,5 +49,18 @@ TBD
 1. Sum Range in a given array for a number of Queries
     - Brute force 
     - Optimal solution
-1. Equilibrium problem - LeftSum = RightSum 
+2. Equilibrium problem - LeftSum = RightSum 
+
+
+# Session 6 - SubArrays
+### Content
+1. SubArray intro
+2. Print all subarrays
+3. Print all subarrays sum
+4. Return all subarrays sum
+5. Few more subarrays Q
+### Problems
+1. Print Subaray of an array from index start to index end
+2. Print all subarrays of length l staarting from index start
+3. Number of subarrays of an array
 1. 
