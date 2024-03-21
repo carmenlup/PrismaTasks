@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,46 +15,49 @@ namespace Algorithms.Sessions
         /// T.C = O(n^2)
         /// S.C = O(1)
         /// </summary>
+        /// <param name="s"></param>
         /// <returns></returns>
-        public int CountPairAAndDBruteForce(char[] chars)
+        public int CountPairsOfCharOneAndChar2BruteForce(string s)
         {
             var count = 0;
-            for (var i = 0; i < chars.Length; i++)
+            for (var i = 0; i < s.Length; i++)
             {
-                
-                if (chars[i] == 'a')
+
+                if (s[i] == 'a')
                 {
-                    for (var j = i + 1; j < chars.Length; j++)
+                    for (var j = i + 1; j < s.Length; j++)
                     {
-                        if (chars[j] == 'g')
+                        if (s[j] == 'g')
                             count++;
                     }
                 }
             }
-            
+
             return count;
         }
 
         /// <summary>
         /// Count number of pair in a array of char such as for a and d
         /// where a is the first chat and d the second
+        /// Solution:
+        ///     Start from end to start count d and carry forward pairs
         /// T.C = O(n)
         /// </summary>
-        /// <param name="chars"></param>
+        /// <param name="s"></param>
         /// <returns></returns>
-        public int CountPairAAndDBack(char[] chars)
+        public int CountPairsOfCharOneAndChar2Back(string s)
         {
             var countG = 0;
             var pairs = 0;
-            for (int i = chars.Length - 1; i >= 0; i--)
+            for (int i = s.Length - 1; i >= 0; i--)
             {
-                if (chars[i] == 'g')
+                if (s[i] == 'g')
                 {
                     countG++;
                 }
                 else
                 {
-                    if (chars[i] == 'a')
+                    if (s[i] == 'a')
                         pairs += countG;
                 }
             }
@@ -64,31 +68,36 @@ namespace Algorithms.Sessions
         /// Count number of pair in a array of char such as for a and d
         /// where a is the first chat and d the second
         /// T.C = O(n)
+        /// Solution:
+        ///     Loop through the array, count a and carry forward pairs
         /// </summary>
-        /// <param name="chars"></param>
+        /// <param name="s"></param>
         /// <returns></returns>
-        public int CountPairAAndD(char[] chars)
+        public int CountPairsOfCharOneAndChar2(string s)
         {
             var countA = 0;
             var pairs = 0;
-            for (int i = 0; i < chars.Length; i++)
+            for (int i = 0; i < s.Length; i++)
             {
-                if (chars[i] == 'a')
+                if (s[i] == 'a')
                     countA++;
                 else
                 {
-                    if (chars[i] == 'g')
+                    if (s[i] == 'g')
                         pairs += countA;
                 }
             }
-            
+
             return pairs;
         }
 
         /// <summary>
         /// Count all leaders in an array of integers
-        /// An item is a leader if all numbers from right are less than the current number
+        /// An item is a leader if all numbers from left are less than the current number
         /// arr[0] is always 0
+        /// Solution:
+        ///     - Iterate over the array and get max
+        ///     - check if max is less than array[i]
         /// T.C = O(n^2)
         /// S.C = O(1)
         /// </summary>
@@ -97,15 +106,18 @@ namespace Algorithms.Sessions
         public int LeadersBruteForce(int[] input)
         {
             var count = 1;
+
             for (int i = 1; i < input.Length; i++)
             {
-                for (int j = i; j < input.Length; j++)
+                var max = int.MinValue;
+                for (int j = 0; j <= i; j++)
                 {
-                    if (input[i] < input[j])
-                        break;
+                    if (max <= input[j])
+                        max = input[j];
                 }
 
-                count++;
+                if (max <= input[i])
+                    count++;
             }
 
             return count;
@@ -113,32 +125,34 @@ namespace Algorithms.Sessions
 
         /// <summary>
         /// Count all leaders in an array of integers
-        /// An item is a leader if all numbers from right are less than the current number
+        /// An item is a leader if all numbers from left are less than the current number
         /// arr[0] is always 0
+        /// Solution:
+        ///     - trace max: once a number is  a leader for all left values
+        ///                  the next leader can be only a value that is
+        ///                  greater than the current leader 
         /// T.C = O(n)
         /// S.C = O(1)
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public List<int> leaders(int[] a, int n)
+        public int Leaders(int[] input)
         {
-            var result = new List<int>();
-            result.Add(a[n - 1]);
-            var max = a[n - 1];
-
-            for (int i = n - 1; i >= 0; i--)
+            var count = 1;
+            var max = input[0];
+            for (var i = 1; i < input.Length; i++)
             {
-                //if (max > input[i])
-                // continue;
-                if (max < a[i])
+                // check if input[i] is leader
+                if (input[i] > max)
                 {
-                    max = a[i];
-                    result.Add(a[i]);
+                    max = input[i];
+                    count++;
                 }
             }
-            result.Reverse();
-            return result;
+
+            return count;
         }
+
 
     }
 }
