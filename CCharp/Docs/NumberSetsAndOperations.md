@@ -14,7 +14,7 @@
 5. Irrational Numbers - All numbers which cannot be written as fractions.
 6. Real Numbers - The set of Rational Numbers with the set of Irrational Numbers adjoined.
 
-![Number sets](./Images/RealNumbersSet.png "App Service on Windows")
+![Number sets](./Images/RealNumbersSet.png "Number Sets")
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
