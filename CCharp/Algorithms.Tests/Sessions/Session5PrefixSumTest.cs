@@ -71,5 +71,53 @@ namespace Algorithms.Tests.Sessions
             var actual = sut.Equilibrium(input);
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [MemberData(nameof(CountEvenData))]
+        public void CountEvenBruteForce_Should_Return_NumberOfEvenForA(int[] input, int[][] q, List<int> expected)
+        {
+            var sut = new Session5PrefixSum();
+
+            var actual = sut.CountEvenBruteForce(input, q);
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [MemberData(nameof(CountEvenData))]
+        public void CountEven_Should_Return_NumberOfEvenForA(int[] input, int[][] q, List<int> expected)
+        {
+            var sut = new Session5PrefixSum();
+
+            var actual = sut.CountEven(input, q);
+            Assert.Equal(expected, actual);
+        }
+
+        public static IEnumerable<object[]> CountEvenData()
+        {
+            yield return new object[]
+            {
+                new int[] {2, 4, 3, 7, 9, 8, 6, 3, 4, 9},
+                new int[][]
+                {
+                    new int[] {4, 8},
+                    new int[] {3, 9},
+                    new int[] {2, 7},
+                    new int[] {0, 4},
+                },
+                new List<int> {3, 3, 2, 2}
+            };
+            yield return new object[]
+            {
+                new int[] {1, 12, 3, 6, 9, 8, 20, 30},
+                new int[][]
+                {
+                    new int[] {3, 7},
+                    new int[] {1, 5},
+                    new int[] {2, 4},
+                    new int[] {0, 6}
+                },
+                new List<int> {4, 3, 1, 4}
+            };
+        }
     }
 }

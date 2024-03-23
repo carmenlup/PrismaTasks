@@ -21,20 +21,16 @@ namespace Algorithms.Tests.Sessions
             Assert.Equal(expected, current);
         }
 
-        [Fact]
-        public void Rotate_ShouldRotateArray_WithKPosAtRight_ForKLowerThanN()
+        [Theory]
+        [InlineData(new[] {1, 2, 3, 4, 5, 6, 7}, 3,new[] {5, 6, 7 , 1, 2, 3, 4})]
+        [InlineData(new[] {1}, 3, new[] {1})]
+        public void Rotate_ShouldRotateArray_WithKPosAtRight_ForKLowerThanN(int[] input, int k, int[] expected)
         {
             var sut = new Session1Practice();
 
-            var inputArray = new[] { 1, 2, 3, 4, 5, 6, 7 };
-            var positions = 3;
+            sut.Rotate(input, k);
 
-            sut.Rotate(inputArray, positions);
-
-            Assert.Equal(5, inputArray[0]);
-            Assert.Equal(6, inputArray[1]);
-            Assert.Equal(7, inputArray[2]);
-            Assert.Equal(1, inputArray[3]);
+            Assert.Equal(expected, input);
         }
 
         [Theory]
@@ -42,6 +38,7 @@ namespace Algorithms.Tests.Sessions
         [InlineData(2, 1)]
         [InlineData(1, 0)]
         [InlineData(32, 0)]
+        [InlineData(31, 1)]
         public void IsPrime_Should_Validate_ANaturalNumber(int input, int expected)
         {
             var sut = new Session1Practice();
