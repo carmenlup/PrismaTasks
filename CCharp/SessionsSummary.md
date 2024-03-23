@@ -52,7 +52,9 @@ $1 --> logN --> \sqrt{N} --> N -> N logN --> N \sqrt{N} --> N^{2} --> 2^{N} $
 1. Calculat numbers of pairs in a string for 2 given chars
     - Brute force
     - Optimal solution from end to start
+![Carry Forward](./Docs/Images/CarryForwardBack.png "Carry Forward right to left")
     - Optimal solution from start to end
+![Carry Forward](./Docs/Images/CarryForward.png "Carry Forward right to left")
 1. Number of leaders in an array
     - Brute force: itereate over the array and get max
     - Optimal sol

@@ -39,7 +39,7 @@ namespace Algorithms.Sessions
         /// <summary>
         /// Count number of pair in a array of char such as for a and d
         /// where a is the first chat and d the second
-        /// Solution:
+        /// Solution: Carry forward from left to right
         ///     Start from end to start count d and carry forward pairs
         /// T.C = O(n)
         /// </summary>
@@ -68,7 +68,7 @@ namespace Algorithms.Sessions
         /// Count number of pair in a array of char such as for a and d
         /// where a is the first chat and d the second
         /// T.C = O(n)
-        /// Solution:
+        /// Solution: Carry forward from left to right
         ///     Loop through the array, count a and carry forward pairs
         /// </summary>
         /// <param name="s"></param>
