@@ -103,6 +103,8 @@ namespace Algorithms.Sessions
         /// Problem - Print all sub-arrays of an array
         /// T.C -> O(n^3)
         /// S.C -> O(n^2)
+        ///     - iterate over array w times to find start and end index
+        ///     - iterate from start to end index and add the subArray to the result
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -112,8 +114,6 @@ namespace Algorithms.Sessions
             var result = new List<List<int>>();
             for (var s = 0; s < n; s++)
             {
-                
-                var idx = 0;
                 for (var e = s; e < input.Length; e++)
                 {
                     var subArray = new List<int>();
@@ -121,6 +121,137 @@ namespace Algorithms.Sessions
                         subArray.Add(input[i]);
 
                     result.Add(subArray);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Print sum of sub-arrays for a given array
+        /// Solution: Brute force
+        ///     - iterate over array w times to find start and end index
+        ///     - iterate from start to end index and calculate the sum
+        /// T.C = O(n^3)
+        /// S.C = O(1)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public long[] PrintSumsOfAllSubArraysBruteForce(int[] input)
+        {
+            var n = input.Length;
+            var totalSubArrays = n * (n + 1) / 2;
+            var result = new long[totalSubArrays];
+            var idx = 0;
+            for (var s = 0; s < n; s++)
+            {
+                for (var e = s; e < input.Length; e++)
+                {
+                    var sum = 0;
+                    for (int i = s; i <= e; i++)
+                        sum += input[i];
+
+                    result[idx] = sum;
+                    idx++;
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Print sum of sub-arrays for a given array
+        /// Solution: Using Prefix Sum
+        ///     - calculate prefix sum
+        ///     - iterate over array w times to find start and end index
+        ///     - calculate the sum using prefix sum (instead to iterate again)
+        /// T.C = O(n^2)
+        /// S.C = O(n)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public long[] PrintSumsOfAllSubArraysPrefixSum(int[] input)
+        {
+            var n = input.Length;
+            var totalSubArrays = n * (n + 1) / 2;
+            var result = new long[totalSubArrays];
+
+            //calculate prefix sum
+            long[] pSum = new long[n];
+            pSum[0] = input[0];
+            for (var i = 1; i < n; i++)
+            {
+                pSum[i] = pSum[i - 1] + input[i];
+            }
+
+            var idx = 0;
+            for (var s = 0; s < n; s++)
+            {
+                for (var e = s; e < input.Length; e++)
+                {
+                    // calculate sum from s to e using pSum
+                    long sum = 0;
+                    if (s == 0)
+                        sum = pSum[e];
+                    else sum = pSum[e] - pSum[s -1];
+
+                    result[idx] = sum;
+                    idx++;
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Print all sub-arrays sums starting from a index
+        /// T.C = O(n)
+        /// S.C = O(n)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public long[] PrintAllSubArraySumStartIndex(int[] input, int s)
+        {
+            int n = input.Length;
+            int sum = 0;
+            var totalSubArrays = n - s;
+
+            long[] result = new long[totalSubArrays];
+            int idx = 0;
+            for (var e = s; e < n; e++)
+            {
+                sum += input[e];
+                result[idx] = sum;
+                idx++;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Print all sub-arrays sums starting from a index
+        /// T.C = O(n^2)
+        /// S.C = O(n)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public long[] PrintAllSubArraySum(int[] input)
+        {
+            int n = input.Length;
+            var totalSubArrays = n * (n + 1) / 2;
+           
+            long[] result = new long[totalSubArrays];
+            int idx = 0;
+            for (int s = 0; s < n; s++)
+            {
+                int sum = 0;
+                for (var e = s; e < n; e++)
+                {
+                    sum += input[e];
+                    result[idx] = sum;
+                    idx++;
                 }
             }
 

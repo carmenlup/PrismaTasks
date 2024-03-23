@@ -74,3 +74,8 @@ TBD
     - Brute Force
     - Optimal O(n): $`\displaystyle\frac{n(n + 1)}{2}`$
 4. Print all subarrays of a givven array
+5. Print sumof each subarray for a given array
+    - Brute Force approach
+    - PrefixSum approach
+6. Print sum for each subaray starting from a givven array
+7. Print sum for each subarray of a givvent array
