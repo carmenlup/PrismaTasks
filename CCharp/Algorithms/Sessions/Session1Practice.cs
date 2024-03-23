@@ -26,39 +26,6 @@ namespace Algorithms.Sessions
         }
 
         /// <summary>
-        /// Rotate Array
-        /// O(n) T; O(1) S
-        /// https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/646/
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="k"></param>
-        public void Rotate(int[] nums, int k)
-        {
-            var n = nums.Length;
-            while (k > 0)
-            {
-                var move = nums[n - 1];
-                for (var i = n - 1; i > 0; i--)
-                {
-                    nums[i] = nums[i - 1];
-                }
-                nums[0] = move;
-                k--;
-            }
-            
-        }
-
-        private int[] Reverse(int[] input, int startIndex, int endIndex)
-        {
-            var temp = input[startIndex];
-            input[startIndex] = input[endIndex];
-            input[endIndex] = temp;
-            startIndex++;
-            endIndex--;
-            return input;
-        }
-
-        /// <summary>
         /// https://www.geeksforgeeks.org/problems/prime-number2314/1
         /// </summary>
         /// <param name="N"></param>
@@ -75,6 +42,39 @@ namespace Algorithms.Sessions
             }
 
             return 1;
+        }
+
+        /// <summary>
+        /// 189. Rotate Array
+        /// Medium
+        /// O(n) T; O(1) S
+        /// https://leetcode.com/problems/rotate-array/description/
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="k"></param>
+        public void Rotate(int[] nums, int k)
+        {
+            if (nums.Length == 1)
+                return;
+
+            k = k % nums.Length;
+
+            Reverse(nums, 0, nums.Length - 1);
+            Reverse(nums, 0, k - 1);
+            Reverse(nums, k, nums.Length - 1);
+
+        }
+
+        private void Reverse(int[] input, int startIndex, int endIndex)
+        {
+            while (startIndex < endIndex)
+            {
+                var temp = input[startIndex];
+                input[startIndex] = input[endIndex];
+                input[endIndex] = temp;
+                startIndex++;
+                endIndex--;
+            }
         }
     }
 }

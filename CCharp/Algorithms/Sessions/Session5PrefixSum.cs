@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +12,7 @@ namespace Algorithms.Sessions
     {
         /// <summary>
         /// 303. Range Sum Query - Immutable
+        /// Easy
         /// https://leetcode.com/problems/range-sum-query-immutable/
         /// Solution:
         ///     1. iterate over all queries
@@ -69,6 +72,8 @@ namespace Algorithms.Sessions
         #endregion
 
         /// <summary>
+        /// 303. Range Sum Query - Immutable
+        /// Easy
         /// https://leetcode.com/problems/range-sum-query-immutable/
         /// T.C = O(N + Q)
         /// S.C = O(N)
@@ -153,13 +158,81 @@ namespace Algorithms.Sessions
         }
 
         /// <summary>
-        /// TODO
+        /// Count even numbers in ranges for a given array
+        /// T.C = O(n * q), where n is the length of the array and q - number of queries
+        /// S.C = O(q)
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input"></param
+        /// <param name="q">
+        ///     Two dimensional array of q queries with
+        ///     left and right values that represents the margins of the intervals
+        /// </param>
         /// <returns></returns>
-        public List<int> RangeSum(int[] input)
+        public List<int> CountEvenBruteForce(int[] input, int[][] q)
         {
             var result = new List<int>();
+            for (var i = 0; i < q.Length; i++)
+            {
+                var count = 0;
+                var left = q[i][0];
+                var right = q[i][1];
+                for (var j = left; j <= right; j++)
+                {
+                    if (input[j] % 2 == 0)
+                        count++;
+                }
+                result.Add(count);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// T.C = O(n + q), where n is the length of the array and q - number of queries
+        /// S.C = O(q)
+        /// </summary>
+        /// <param name="input"></param
+        /// <param name="q">
+        ///     Two dimensional array of q queries with
+        ///     left and right values that represents the margins of the intervals
+        /// </param>
+        /// <returns></returns>
+        public List<int> CountEven(int[] input, int[][] q)
+        {
+            var result = new List<int>();
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] % 2 == 0)
+                    input[i] = 1;
+                else
+                {
+                    input[i] = 0;
+                }
+            }
+
+            int[] pSum = new int[input.Length];
+            var n = input.Length;
+            pSum[0] = input[0];
+            for (int i = 1; i < n; i++)
+            {
+                pSum[i] = pSum[i - 1] + input[i];
+            }
+
+            var count = 0;
+            for (int i = 0; i < q.Length; i++)
+            {
+                var left = q[i][0];
+                var right = q[i][1];
+                
+                if (left == 0)
+                    count = pSum[right];
+                else
+                {
+                    count = pSum[right] - pSum[left - 1];
+                }
+                result.Add(count);
+            }
+
             return result;
         }
     }
