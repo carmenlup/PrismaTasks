@@ -133,7 +133,7 @@ namespace Algorithms.Sessions
         ///     - iterate over array w times to find start and end index
         ///     - iterate from start to end index and calculate the sum
         /// T.C = O(n^3)
-        /// S.C = O(1)
+        /// S.C = O(n)
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -187,7 +187,7 @@ namespace Algorithms.Sessions
             var idx = 0;
             for (var s = 0; s < n; s++)
             {
-                for (var e = s; e < input.Length; e++)
+                for (var e = s; e < n; e++)
                 {
                     // calculate sum from s to e using pSum
                     long sum = 0;
