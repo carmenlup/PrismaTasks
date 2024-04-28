@@ -12,7 +12,7 @@ namespace Algorithms.Sessions
         /// <summary>
         /// Initial problem: print a subArray from index start to index end
         /// T.C -> O(n)
-        /// S.C -> O(1)
+        /// S.C -> O(n) - this is O(1) for only printing. I created ana array for UT
         /// </summary>
         /// <param name="array"></param>
         /// <param name="s"></param>
@@ -32,9 +32,9 @@ namespace Algorithms.Sessions
         }
 
         /// <summary>
-        /// Initial problem: print a subArray from index start to index end
+        /// Initial problem: print a subArray or length l from start index
         /// T.C -> O(n)
-        /// T.C -> O(1)+
+        /// T.C -> O(n) - this is O(1) for only printing. I created ana array for UT
         /// </summary>
         /// <param name="array"></param>
         /// <param name="s"></param>
@@ -128,7 +128,7 @@ namespace Algorithms.Sessions
         }
 
         /// <summary>
-        /// Print sum of sub-arrays for a given array
+        /// Print each sub-arrays sum for a given array
         /// Solution: Brute force
         ///     - iterate over array w times to find start and end index
         ///     - iterate from start to end index and calculate the sum
@@ -160,7 +160,7 @@ namespace Algorithms.Sessions
         }
 
         /// <summary>
-        /// Print sum of sub-arrays for a given array
+        /// Print each sub-arrays sum for a given array
         /// Solution: Using Prefix Sum
         ///     - calculate prefix sum
         ///     - iterate over array w times to find start and end index
@@ -204,7 +204,7 @@ namespace Algorithms.Sessions
         }
 
         /// <summary>
-        /// Print all sub-arrays sums starting from a index
+        /// Print all sub-arrays sum starting at a given index
         /// T.C = O(n)
         /// S.C = O(n)
         /// </summary>
