@@ -47,8 +47,20 @@ $1 --> logN --> \sqrt{N} --> N -> N logN --> N \sqrt{N} --> N^{2} --> 2^{N} $
 2. Examples
 
 # Session 4 - Carry Forward
-TBD 
-
+### Content
+1. Count pairs
+2. leaders in the array
+3. N Bulbs
+### Problems
+1. Calculat numbers of pairs in a string for 2 given chars
+    - Brute force
+    - Optimal solution from end to start
+![Carry Forward](./Docs/Images/CarryForwardBack.png "Carry Forward right to left")
+    - Optimal solution from start to end
+![Carry Forward](./Docs/Images/CarryForward.png "Carry Forward right to left")
+1. Number of leaders in an array
+    - Brute force: itereate over the array and get max
+    - Optimal sol
 # Session 5 - Prefix Sum
 ### Problems
 1. Sum Range in a given array for a number of Queries
