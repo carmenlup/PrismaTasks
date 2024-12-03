@@ -46,6 +46,7 @@ namespace PracticeTests.Course.Class
 
         [Theory]
         [InlineData(new[] { 1, 2, 3, 2, 5, 5, 1 }, 3)]
+        [InlineData(new[] { 1, 2, 11, 2, 5, 5, 1 }, 11)]
         public void FindSingleNumbertBruteForce_ShouldReturn_TheSingleNumber(int[] input, int expected)
         {
             var result = _sut.FindSingleNumberClasicApproach(input);
@@ -72,12 +73,21 @@ namespace PracticeTests.Course.Class
         }
 
         [Theory]
-        [InlineData(new int[] { 2, 2, 1 }, 1)]
+        [InlineData(new int[] { 5, 2, 2, 1, 5 }, 1)]
         public void FindSingleNumber_ShouldReturn_TheSingleNumberInTheArray(int[] nums, int expected)
         {
-            var result = _sut.FindSingle(nums);
+            var result = _sut.FindSingle2(nums);
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [InlineData(new[] { 1, 1, 2, 2, 3, 2, 5, 5, 1, 5 }, 3)]
+        public void FindSingle3_ShouldReturn_TheSingleNumberInTheArray(int[] nums, int expected)
+        {
+            var result = _sut.FindSingle3(nums);
+            Assert.Equal(expected, result);
+        }
+
 
         [Theory]
         [InlineData(5, 1, 0)]
@@ -104,6 +114,65 @@ namespace PracticeTests.Course.Class
         public void ToggleIthBit_ShouldReturn_TheNumberWithIthBitToggled(int n, int i, int expected)
         {
             var result = _sut.ToggleIthBit(n, i);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(5, 0, 4)]
+        [InlineData(61, 4, 45)]
+        [InlineData(45, 2, 41)]
+        public void ClearIthBit_ShouldReturn_TheNumberWithIthBitSet(int n, int i, int expected)
+        {
+            var result = _sut.ClearIthBit(n, i);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(5, 0, 1)]
+        [InlineData(5, 1, 0)]
+        public void CheckIthBit_ShouldReturn_TheIthBit(int n, int i, int expected)
+        {
+            var result = _sut.CheckIthBit(n, i);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(5, 0, true)]
+        [InlineData(5, 1, false)]
+        public void IsIthBitSet_ShouldReturn_TheIthBit(int n, int i, bool expected)
+        {
+            var result = _sut.IsIthBitUnset(n, i);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(5, 2)]
+        [InlineData(45, 4)]
+        public void CountOneBitsFor32Bit_ShouldReturn_TheNumberOfSetBitForAPositiveNumber(int n,  int expected)
+        {
+            var result = _sut.CountOneBitsFor32Bit(n);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(13, 3)]
+       
+        public void CountDigitOne_ShouldReturn_TheNumberOfSetBitForAPositiveNumber(int n, int expected)
+        {
+            var result = _sut.CountDigitOne(n);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(1, 2, 1, 3)]
+
+        public void GenerateIntWithTheGivvenNumberOfBitsAZerosBOnesCZeros_Should_ConstructNumber(
+            int a, 
+            int b,
+            int c,
+            int expected)
+        {
+            var result = _sut.GenerateIntWithTheGivenNumberOfBitsAZerosBOnesCZeros(a, b, c);
             Assert.Equal(expected, result);
         }
     }

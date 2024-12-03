@@ -13,12 +13,13 @@ namespace Algorithms.Sessions
     /// </summary>
     public class Session15BitManipulationProperties
     {
+        // find ith bit - use AND operator
         // set ith bit - use OR operator
-        // clear ith bit - use AND operator
-        // toggle ith bit - use XOR operator
+        // unset ith bit - use AND operator and ~ operator (Question 3)
+        // toggle ith bit - use XOR operator (Question 2)
         // update ith bit - clear ith bit and set ith bit
-        // check if ith bit is set - use AND operator
-        // check if ith bit is clear - use AND operator
+        // check if ith bit is set - use AND operator (Question 4)
+        // check if ith bit is clear - use AND operator (Question 4)
         // clear all bits from MSB to ith bit - use AND operator
         // clear all bits from ith bit to 0 - use AND operator
         // set all bits from MSB to ith bit - use OR operator
@@ -56,26 +57,43 @@ namespace Algorithms.Sessions
             // return num ^ (1 << i);
         }
 
+        /// <summary>
+        /// Question 3: Unset ith bit - use AND operator and ~ operator
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public int ClearIthBit(int num, int i)
         {
             return num & ~(1 << i);
         }
 
+        /// <summary>
+        /// Question 4: Check if ith bit is set or not and return it
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public int CheckIthBit(int num, int i)
         {
-            return num & (1 << i);
+            // this can also be done usinf left sift operator but this can go on overflow
+            // if(num & (1 << i) != 0)
+            //     return 1;
+            // return 0;
+            return num & (1 >> i);
         }
 
         /// <summary>
-        /// Using left whift + and operator
+        /// Question 4: Using left whift + and operator
         /// this can giveoverflow exception?
         /// </summary>
         /// <param name="num"></param>
         /// <param name="i"></param>
         /// <returns></returns>
-        public bool IsIthBitSet(int num, int i)
+        public bool IsIthBitUnset(int num, int i)
         {
-            return (num & (1 << i)) != 0;
+            // return (num & (1 << i)) != 0;
+            return (num & (1 >> i)) == 1;
         }
 
         /// <summary>
@@ -91,7 +109,8 @@ namespace Algorithms.Sessions
 
 
         /// <summary>
-        /// Count all set bits
+        /// Question 5: Count all set bits
+        /// Solution 1
         /// T.C = O(log n)
         /// </summary>
         /// <param name="num"></param>
@@ -108,22 +127,57 @@ namespace Algorithms.Sessions
             return count;
         }
 
+        /// <summary>
+        /// Question 5: Count all set bits 
+        /// Solution 1: traverse each bit and check if it is set
+        /// T.C = O(32) ~ O(1)
+        /// S.C = O(1)
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
         public int CountOneBitsFor32Bit(int num)
         {
             var count = 0;
             for (var i = 0; i < 32; i++)
             {
-                if ((num & (1 << i)) == 0)
+                if ((num & 1) == 1)
                 {
                     count++;
                 }
-                //num = num & (num - 1);
+                num = num >> 1;
             }
 
             return count;
         }
 
-        public int GenerateIntWithTheGivvenNumberOfBitsAZerosBOnesCZeros(int a, int b, int c)
+        /// <summary>
+        /// Solution 2: Using Brian Kernighan’s Algorithm
+        /// 
+        /// Remarks: THis is better algo as in Solution 1 we ignore 32 as constant 
+        /// whereas in this solution 32 is max max value of log(n)
+        /// 
+        /// T.C = O(log n)
+        /// S.C = O(1)
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public int CountDigitOne(int n)
+        {
+            var res = 0;
+
+            while(n > 0)
+            {
+                if((n & 1) == 1)
+                {
+                    res++;
+                }
+                n = n >> 1;
+            }
+
+            return res;
+        }
+
+        public int GenerateIntWithTheGivenNumberOfBitsAZerosBOnesCZeros(int a, int b, int c)
         {
             var num = 0;
             //for (var i = 0; i < a; i++)
@@ -175,7 +229,7 @@ namespace Algorithms.Sessions
             //    {
             //        if (A[i] == A[j])
             //        {
-            //            break; 
+            //            break;
             //        }
             //        return A[i];
             //    }
@@ -266,7 +320,7 @@ namespace Algorithms.Sessions
         ///     Traverse the Haset and return the element with count = 1
         ///     T.C -> O(n)
         ///     S.C -> O(n)
-        /// Solution 3: Optimal Solution Using SOR operator
+        /// Solution 3: Optimal Solution Using XOR operator
         ///     The next properties are used:
         ///     a ^ a = 0
         ///     comutativity a ^ b = b ^ a
@@ -276,14 +330,48 @@ namespace Algorithms.Sessions
         ///     cancel each other and we will have the single element
         ///     T.C -> O(n)
         ///     S.C -> O(1)
+        ///     
+        /// Sum = 5 + 2 + (-1) + (-2) + 1
         /// </summary>
-        public int FindSingle(int[] input)
+        public int FindSingle2(int[] input)
         {
             var res = 0;
 
             for (var i = 0; i < input.Length; i++)
             {
                 res ^= input[i];
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// Solution:
+        /// Count the numbers in which they are set and check if is in 3n + 1 format to count
+        /// 137. Single Number II
+        /// https://leetcode.com/problems/single-number-ii/description/
+        /// T.C = O(n)
+        /// S.C = O(1)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public int FindSingle3(int[] input)
+        {
+            var res = 0;
+
+            for(var i = 0; i < 32; i++)
+            {
+                var count = 0;
+                for (var j = 0; j < input.Length; j++)
+                {
+                    if (((input[j] >> i) & 1) == 1)
+                        count++;
+                }
+
+                if(count % 3 == 1)
+                {
+                    res = (1 << i) | res;
+                }
             }
 
             return res;
