@@ -17,7 +17,7 @@ namespace Algorithms.Sessions
         ///    -> for tthat reason we are counting the number of zeros and we will add them at the end
         ///    Remark: important to find zeros at the beginning and n will b erecalculated
         /// 2. reminder = n % x
-        /// 3. reverrse = reverse * 10 + reminder
+        /// 3. reverse = reverse * 10 + reminder
         /// 4. new number -> n = n / x
         /// 
         /// </summary>

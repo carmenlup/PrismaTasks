@@ -74,6 +74,7 @@ namespace PracticeTests.Course.Class
 
         [Theory]
         [InlineData(new int[] { 5, 2, 2, 1, 5 }, 1)]
+        [InlineData(new int[] { 4, 1, 2, 1, 2 }, 4)]
         public void FindSingleNumber_ShouldReturn_TheSingleNumberInTheArray(int[] nums, int expected)
         {
             var result = _sut.FindSingle2(nums);
@@ -85,6 +86,14 @@ namespace PracticeTests.Course.Class
         public void FindSingle3_ShouldReturn_TheSingleNumberInTheArray(int[] nums, int expected)
         {
             var result = _sut.FindSingle3(nums);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(new[] { 1, 2, 3, 2, 5, 1, 5, 11 }, new [] { 3, 11 })]
+        public void FindSingleTwoNo_ShouldReturn_TheTwoSingleNumbersInTHeArray(int[] nums, int[] expected)
+        {
+            var result = _sut.FindSingleTwoNo(nums);
             Assert.Equal(expected, result);
         }
 

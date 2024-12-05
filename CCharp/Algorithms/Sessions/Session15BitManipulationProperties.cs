@@ -346,10 +346,11 @@ namespace Algorithms.Sessions
         }
 
         /// <summary>
-        /// Solution:
-        /// Count the numbers in which they are set and check if is in 3n + 1 format to count
+        /// Medium
         /// 137. Single Number II
         /// https://leetcode.com/problems/single-number-ii/description/
+        /// Solution:
+        ///     Count the numbers in which they are set and check if is in 3n + 1 format to count
         /// T.C = O(n)
         /// S.C = O(1)
         /// </summary>
@@ -357,6 +358,16 @@ namespace Algorithms.Sessions
         /// <returns></returns>
         public int FindSingle3(int[] input)
         {
+            /*
+             * cchecck this code
+                int ones = 0, twos = 0;
+                foreach(var num in nums)
+                {
+                    ones = (num ^ ones) & ~twos;
+                    twos = (num ^ twos) & ~ones;
+                }
+                return ones;
+             * */
             var res = 0;
 
             for(var i = 0; i < 32; i++)
@@ -375,6 +386,56 @@ namespace Algorithms.Sessions
             }
 
             return res;
+        }
+
+        /// <summary>
+        /// Medium
+        /// 260. Single Number III
+        /// Source: https://leetcode.com/problems/single-number-iii/
+        /// Solution:
+        ///     - calculate the XOR of all the elements
+        ///     - find the rightmost set bit
+        ///     - calculate the XOR into 32 different groups
+        ///         - if the bit is set then add to group 1
+        ///         - if the bit is not set then add to group 2
+        /// T.C = O(n)
+        /// S.C = O(1)
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+
+        public int[] FindSingleTwoNo(int[] nums)
+        {
+            var allXor = 0;
+            for(var i = 0; i < nums.Length; i++)
+            {
+                allXor ^= nums[i];
+            }
+
+            for(var i = 0; i < 32; i++)
+            {
+                if (((allXor >> i) & 1) == 1)
+                {
+                    allXor = i;
+                    break;
+                }
+            }
+
+            var res = new int[2];
+            for (var i = 0; i < nums.Length; i++)
+            {
+                if (((nums[i] >> allXor) & 1) == 0)
+                {
+                    res[0] ^= nums[i];
+                }
+                else
+                {
+                    res[1] ^= nums[i];
+                }
+            }
+
+            return res;
+
         }
         #endregion
     }
