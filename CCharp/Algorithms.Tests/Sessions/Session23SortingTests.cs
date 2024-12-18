@@ -45,6 +45,19 @@ namespace Algorithms.Tests.Sessions
             // Assert
             Assert.Equal(result, actual);
         }
+
+        [Theory]
+        [InlineData(new int[] { -2, 3, 8, 3, -1, 3 },
+            new int[] { -2, -1, 3, 3, 3, 8 })]
+        public void SmalestNumberWithNegative_GivenArray_ReturnsSmalestNumber(int[] input, int[] result)
+        {
+            // Act
+            var actual = _sut.SmalestNumberWithNegative(input);
+
+            // Assert
+            Assert.Equal(result, actual);
+        }
+
         [Theory]
         [InlineData(
             new[] { 1, 2, 3},
@@ -90,6 +103,9 @@ namespace Algorithms.Tests.Sessions
         [InlineData(
             new[] { 1 }, 
             new[] { 1 })]
+        //[InlineData(
+        //    new int[] { 4, 2, 5, 7 },
+        //    new int[] { 4, 5, 2, 7})]
         public void SortArray_ShouldReturnMergedArray_AndKeepIndexItem(
             int[] list, int[] expected)
         {
