@@ -112,5 +112,19 @@ namespace Algorithms.Tests.Sessions
             _sut.SortArray(list);
             Assert.Equal(expected, list);
         }
+
+        [Theory]
+        [InlineData(
+            new[] { 1, 2, 3, 2, 5, 6 },
+            new[] { 1, 2, 2, 3, 5, 6 })]
+        [InlineData(
+            new[] { 0, 0, 2, 1 },
+            new[] { 0, 0, 1, 2 })]
+        public void MergeSort_ShouldReturnMergedArray_AndKeepIndexItem(
+            int[] list, int[] expected)
+        {
+            _sut.MergeSort(list, 0, list.Length - 1);
+            Assert.Equal(expected, list);
+        }
     }
 }

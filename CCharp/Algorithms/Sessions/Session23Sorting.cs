@@ -292,5 +292,89 @@ namespace Algorithms.Sessions
 
             return nums;
         }
+
+        /// <summary>
+        /// Merge Sort
+        /// T.C = O(nlogn)
+        /// S.C = O(n)
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        public void MergeSort(int[] nums, int left, int right)
+        {
+            if(left == right)
+                return;
+
+            //if (left < right)
+            //{
+                var mid = left + (right - left) / 2;
+                MergeSort(nums, left, mid);
+                MergeSort(nums, mid + 1, right);
+                Merge(nums, left, mid, right);
+            //}
+        }
+
+        /// <summary>
+        /// Merge function splits the array in 2 parts
+        /// and merges them in sorted order
+        /// T.C = O(n)
+        /// 
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="left"></param>
+        /// <param name="mid"></param>
+        /// <param name="right"></param>
+        public void Merge(int[] nums, int left, int mid, int right)
+        {
+            var n1 = mid - left + 1;
+            var n2 = right - mid;
+
+            var L = new int[n1];
+            var R = new int[n2];
+
+            for (var i = 0; i < n1; i++)
+            {
+                L[i] = nums[left + i];
+            }
+
+            for (var j = 0; j < n2; j++)
+            {
+                R[j] = nums[mid + 1 + j];
+            }
+
+            var k = left;
+            var i1 = 0;
+            var i2 = 0;
+
+            while (i1 < n1 && i2 < n2)
+            {
+                if (L[i1] <= R[i2])
+                {
+                    nums[k] = L[i1];
+                    i1++;
+                }
+                else
+                {
+                    nums[k] = R[i2];
+                    i2++;
+                }
+                k++;
+            }
+
+            while (i1 < n1)
+            {
+                nums[k] = L[i1];
+                i1++;
+                k++;
+            }
+
+            while (i2 < n2)
+            {
+                nums[k] = R[i2];
+                i2++;
+                k++;
+            }
+        }
     }
 }
