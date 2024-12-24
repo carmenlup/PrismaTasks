@@ -28,7 +28,7 @@ namespace Algorithms.Tests.Sessions
         [InlineData(5, "1 2 3 4 5")]
         public void PrintNS2_Should_PrintAllNumbersFrom1ToN(int n, string expected)
         {
-            _sut.PrintNatural2(n);
+            _sut.PrintNumbers(n);
         }
 
         [Theory]
